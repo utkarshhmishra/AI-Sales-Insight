@@ -251,40 +251,11 @@ Output:
 - [ ] Multi-language support (Hindi, Tamil, etc.)
 - [ ] Voice briefings
 
-## 🚀 Deployment
-
-### Deploy to Production (Render - 1-Click) ⚡
-Share your app with the world! Deploy in one click:
-
-1. **Push to GitHub**
-   ```bash
-   git push origin main
-   ```
-
-2. **Deploy with Blueprint**
-   - Go to https://dashboard.render.com
-   - New → Blueprint → Connect your repo
-   - Click "Apply" → Done!
-
-3. **Add API Keys** in Render dashboard
-   ```env
-   OPENAI_API_KEY=your-key
-   SECRET_KEY=random-secret
-   ```
-
-4. **Share the link:** `https://ai-sales-insight-frontend.onrender.com`
-
-📖 **Complete guides:**
-- [DEPLOYMENT_QUICK_START.md](DEPLOYMENT_QUICK_START.md) - Deploy in 5 minutes
-- [docs/RENDER_DEPLOYMENT.md](docs/RENDER_DEPLOYMENT.md) - Complete walkthrough
-
-## 📝 Documentation
+## � Documentation
 
 | Guide | Description | Audience |
 |-------|-------------|----------|
 | [QUICKSTART.md](QUICKSTART.md) | 10-minute setup guide | Developers |
-| [DEPLOYMENT_QUICK_START.md](DEPLOYMENT_QUICK_START.md) | Deploy in 5 minutes | Developers |
-| [docs/RENDER_DEPLOYMENT.md](docs/RENDER_DEPLOYMENT.md) | Complete deployment guide | DevOps |
 | [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) | Complete overview | Everyone |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | System design (15+ pages) | Technical |
 | [docs/TESTING.md](docs/TESTING.md) | Testing & validation | QA/Dev |
