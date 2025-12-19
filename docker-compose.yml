@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: ai_sales_postgres
+    environment:
+      POSTGRES_USER: salesinsight
+      POSTGRES_PASSWORD: salesinsight123
+      POSTGRES_DB: ai_sales_insight
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U salesinsight"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: ai_sales_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  # Backend API (commented out - run locally during development)
+  # backend:
+  #   build: ./backend
+  #   container_name: ai_sales_backend
+  #   ports:
+  #     - "8000:8000"
+  #   environment:
+  #     - DATABASE_URL=postgresql://salesinsight:salesinsight123@postgres:5432/ai_sales_insight
+  #     - REDIS_URL=redis://redis:6379/0
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #     redis:
+  #       condition: service_healthy
+  #   volumes:
+  #     - ./backend:/app
+  #   command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  # Celery Worker (for background tasks)
+  # celery:
+  #   build: ./backend
+  #   container_name: ai_sales_celery
+  #   command: celery -A core.celery worker --loglevel=info
+  #   environment:
+  #     - DATABASE_URL=postgresql://salesinsight:salesinsight123@postgres:5432/ai_sales_insight
+  #     - REDIS_URL=redis://redis:6379/0
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - redis
+  #     - postgres
+  #   volumes:
+  #     - ./backend:/app
+
+  # Celery Beat (for scheduled tasks)
+  # celery-beat:
+  #   build: ./backend
+  #   container_name: ai_sales_celery_beat
+  #   command: celery -A core.celery beat --loglevel=info
+  #   environment:
+  #     - DATABASE_URL=postgresql://salesinsight:salesinsight123@postgres:5432/ai_sales_insight
+  #     - REDIS_URL=redis://redis:6379/0
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - redis
+  #     - postgres
+  #   volumes:
+  #     - ./backend:/app
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  default:
+    name: ai_sales_network
