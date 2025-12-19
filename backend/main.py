@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifespan manager"""
-    logger.info("🚀 Starting AI Sales Insight API")
+    logger.info("[STARTUP] Starting AI Sales Insight API")
     logger.info(f"Environment: {settings.APP_ENV}")
     
     # Initialize services here
@@ -29,7 +29,7 @@ async def lifespan(app: FastAPI):
     
     yield
     
-    logger.info("🛑 Shutting down AI Sales Insight API")
+    logger.info("[SHUTDOWN] Shutting down AI Sales Insight API")
     # Cleanup here
 
 

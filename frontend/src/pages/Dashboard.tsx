@@ -104,22 +104,36 @@ export default function Dashboard() {
 
         {/* Persona Selector */}
         <div className="flex flex-wrap justify-center gap-3 pt-4">
-          {personas.map((persona) => (
-            <button
-              key={persona.id}
-              onClick={() => setSelectedPersona(persona.id)}
-              className={`
-                flex items-center px-5 py-3 rounded-xl font-medium transition-all duration-200 transform hover:scale-105
-                ${selectedPersona === persona.id
-                  ? `bg-${persona.color}-600 text-white shadow-lg dark:bg-${persona.color}-500`
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 shadow'
-                }
-              `}
-            >
-              {persona.icon}
-              <span className="ml-2">{persona.name}</span>
-            </button>
-          ))}
+          {personas.map((persona) => {
+            const isSelected = selectedPersona === persona.id
+            const baseClasses = "flex items-center px-5 py-3 rounded-xl font-medium transition-all duration-200 transform hover:scale-105"
+            
+            const getActiveClasses = () => {
+              switch(persona.color) {
+                case 'blue':
+                  return "bg-blue-600 text-white shadow-lg dark:bg-blue-500"
+                case 'purple':
+                  return "bg-purple-600 text-white shadow-lg dark:bg-purple-500"
+                case 'green':
+                  return "bg-green-600 text-white shadow-lg dark:bg-green-500"
+                default:
+                  return "bg-blue-600 text-white shadow-lg dark:bg-blue-500"
+              }
+            }
+            
+            const inactiveClasses = "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 shadow"
+            
+            return (
+              <button
+                key={persona.id}
+                onClick={() => setSelectedPersona(persona.id)}
+                className={`${baseClasses} ${isSelected ? getActiveClasses() : inactiveClasses}`}
+              >
+                {persona.icon}
+                <span className="ml-2">{persona.name}</span>
+              </button>
+            )
+          })}
         </div>
       </div>
 

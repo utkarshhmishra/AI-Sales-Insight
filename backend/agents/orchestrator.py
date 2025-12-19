@@ -63,7 +63,7 @@ class AgentOrchestrator:
             )
             
             # Execute data collection agents in parallel
-            self.logger.info("📊 Executing data collection agents...")
+            self.logger.info("[DATA] Executing data collection agents...")
             research_output, news_output, financial_output, social_output = await asyncio.gather(
                 self.research_agent.execute(agent_input),
                 self.news_agent.execute(agent_input),
@@ -90,7 +90,7 @@ class AgentOrchestrator:
                     agent_outputs[name] = None
             
             # Synthesize insights
-            self.logger.info("🧠 Synthesizing insights...")
+            self.logger.info("[SYNTHESIS] Synthesizing insights...")
             synthesis_input = AgentInput(
                 company_name=company_name,
                 context={"agent_outputs": agent_outputs},
@@ -114,7 +114,7 @@ class AgentOrchestrator:
                 "summary": self._create_summary(agent_outputs, synthesis_output)
             }
             
-            self.logger.info(f"✅ Insight gathering completed in {total_time}ms")
+            self.logger.info(f"[SUCCESS] Insight gathering completed in {total_time}ms")
             return result
             
         except Exception as e:
