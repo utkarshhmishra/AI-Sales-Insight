@@ -67,6 +67,7 @@ data/processed/
 *.json
 !package.json
 !tsconfig.json
+!tsconfig.*.json
 
 # API Keys (redundant but explicit)
 *_key.txt
