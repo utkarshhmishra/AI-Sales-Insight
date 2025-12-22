@@ -1,92 +1,30 @@
 name: ai-sales-insight
-region: nyc
-
 services:
-  # Backend API Service
-  - name: backend
-    dockerfile_path: backend/Dockerfile.prod
-    source_dir: /
-    github:
-      branch: main
-      deploy_on_push: true
-    http_port: 8000
-    instance_count: 1
-    instance_size_slug: basic-xxs
-    routes:
-      - path: /api
-    health_check:
-      http_path: /api/health
-      initial_delay_seconds: 60
-      period_seconds: 10
-      timeout_seconds: 5
-      success_threshold: 1
-      failure_threshold: 3
-    envs:
-      - key: DATABASE_URL
-        scope: RUN_TIME
-        type: SECRET
-      - key: REDIS_URL
-        scope: RUN_TIME
-        type: SECRET
-      - key: OPENAI_API_KEY
-        scope: RUN_TIME
-        type: SECRET
-      - key: ANTHROPIC_API_KEY
-        scope: RUN_TIME
-        type: SECRET
-      - key: ALPHA_VANTAGE_API_KEY
-        scope: RUN_TIME
-        type: SECRET
-      - key: NEWS_API_KEY
-        scope: RUN_TIME
-        type: SECRET
-      - key: TWITTER_API_KEY
-        scope: RUN_TIME
-        type: SECRET
-      - key: TWITTER_API_SECRET
-        scope: RUN_TIME
-        type: SECRET
-      - key: TWITTER_ACCESS_TOKEN
-        scope: RUN_TIME
-        type: SECRET
-      - key: TWITTER_ACCESS_SECRET
-        scope: RUN_TIME
-        type: SECRET
-      - key: CORS_ORIGINS
-        value: "*"
-        scope: RUN_TIME
-      - key: LOG_LEVEL
-        value: "INFO"
-        scope: RUN_TIME
-
-  # Frontend Service
-  - name: frontend
-    build_command: npm run build
-    run_command: npx serve -s dist -l 8080
-    source_dir: frontend
-    github:
-      branch: main
-      deploy_on_push: true
-    http_port: 8080
-    instance_count: 1
-    instance_size_slug: basic-xxs
-    routes:
-      - path: /
-    envs:
-      - key: VITE_API_URL
-        value: ${backend.PUBLIC_URL}/api
-        scope: BUILD_TIME
-
-# Managed Database (PostgreSQL)
-databases:
-  - name: db
-    engine: PG
-    version: "15"
-    production: false
-    cluster_name: ai-sales-insight-db
-
-# Redis Cache
-  - name: redis
-    engine: REDIS
-    version: "7"
-    production: false
+- dockerfile_path: backend/Dockerfile.prod
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: utkarshhmishra/AI-Sales-Insight
+  health_check:
+    http_path: /api/v1/health
+  http_port: 8000
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: backend
+  routes:
+  - path: /api
+  source_dir: /
+- build_command: npm install && npm run build
+  environment_slug: node-js
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: utkarshhmishra/AI-Sales-Insight
+  http_port: 3000
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: frontend
+  routes:
+  - path: /
+  run_command: npx serve -s dist -l 3000
+  source_dir: frontend

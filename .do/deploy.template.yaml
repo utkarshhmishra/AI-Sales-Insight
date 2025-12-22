@@ -1,0 +1,25 @@
+spec:
+  name: ai-sales-insight
+  services:
+  - name: backend
+    dockerfile_path: backend/Dockerfile.prod
+    source_dir: /
+    github:
+      branch: main
+      deploy_on_push: true
+      repo: utkarshhmishra/AI-Sales-Insight
+    http_port: 8000
+    instance_count: 1
+    instance_size_slug: basic-xxs
+  - name: frontend
+    environment_slug: node-js
+    github:
+      branch: main
+      deploy_on_push: true
+      repo: utkarshhmishra/AI-Sales-Insight
+    source_dir: frontend
+    build_command: npm install && npm run build
+    run_command: npx serve -s dist -l 3000
+    http_port: 3000
+    instance_count: 1
+    instance_size_slug: basic-xxs
