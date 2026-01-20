@@ -1,11 +1,12 @@
 # Quick Start Guide - AI Sales Insight
 
+Get the AI Sales Insight system running in 10 minutes.
+
 ## Prerequisites
 
-- Python 3.11 or higher
-- Node.js 18 or higher
-- Git
-- Docker Desktop (optional but recommended)
+- Python 3.11+
+- Node.js 18+
+- OpenAI API Key (optional - works with demo mode)
 
 ## Installation Steps
 
@@ -138,25 +139,15 @@ docker-compose down
 docker-compose up -d
 ```
 
-### Module Not Found Error
-```powershell
-# Ensure virtual environment is activated
-.\venv\Scripts\activate
-
-# Reinstall dependencies
-pip install -r requirements.txt
-```
-
 ## Next Steps
 
-1. Read [ARCHITECTURE.md](./ARCHITECTURE.md) for system design
-2. Check [API_DOCUMENTATION.md](./API_DOCUMENTATION.md) for API details
-3. See [DEPLOYMENT.md](./DEPLOYMENT.md) for production deployment
-4. Review [DEVELOPMENT.md](./DEVELOPMENT.md) for contributing
-
-## Support
-
-For issues or questions:
-- Check documentation in `/docs` folder
+- Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for complete system design
+- Check [docs/TESTING.md](docs/TESTING.md) for testing guide
+- See [docs/DEMO_GUIDE.md](docs/DEMO_GUIDE.md) for presentation walkthrough
 - Review API docs at http://localhost:8000/docs
+
+---
+
+**Project**: AI Sales Insight - Multi-Agent Sales Intelligence System  
+**Course**: Product Management with GenAI & Agentic AI
 - Check logs in `backend/logs/app.log`

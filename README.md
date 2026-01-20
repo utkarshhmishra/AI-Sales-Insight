@@ -1,4 +1,4 @@
-# 🚀 AI Sales Insight - Intelligent Sales Intelligence Agent
+# AI Sales Insight - Intelligent Sales Intelligence Agent
 
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.109-green.svg)](https://fastapi.tiangolo.com/)
@@ -8,19 +8,18 @@
 
 > **Transforming sales intelligence from hours to minutes using Multi-Agent AI**
 
-## 🎯 Problem Statement
+## Problem Statement
 
 Sales representatives in mid-sized Indian enterprises spend **1-4 hours per client** gathering scattered information from CRMs, emails, and the web. This leads to poor personalization and lost opportunities.
 
 **AI Sales Insight** solves this by automatically curating timely, contextual company insights from financial data, industry news, and social media—**reducing prep time by 95%**.
 
-## 🎓 Course Project
+## Course Project
 
 **Course**: Product Management with GenAI and Agentic AI  
-**Institution**: [Your Institution]  
 **Focus**: Building autonomous multi-agent systems for enterprise automation
 
-## ⚡ Quick Demo
+## Quick Demo
 
 ```powershell
 # 1. Run automated setup
@@ -34,25 +33,25 @@ Sales representatives in mid-sized Indian enterprises spend **1-4 hours per clie
 
 # 4. Open browser → http://localhost:5173
 # 5. Enter company name → Click "Generate Insights"
-# 6. Get comprehensive insights in 2-3 seconds! 🎉
+# 6. Get comprehensive insights in 2-3 seconds!
 ```
 
-## 📊 Success Metrics
+## Success Metrics
 
 ### Quantitative Goals (vs Manual Research)
 | Metric | Target | Achieved |
 |--------|--------|----------|
-| Prep Time Reduction | ≥20% | **95%+** ✅ |
-| Conversion Improvement | ≥15% | Projected ✅ |
-| Pipeline Velocity | ≥10% faster | Projected ✅ |
-| **Time Savings** | **Minutes** | **60-240 min → 2-3 min** 🚀 |
+| Prep Time Reduction | ≥20% | **95%+** |
+| Conversion Improvement | ≥15% | Projected |
+| Pipeline Velocity | ≥10% faster | Projected |
+| **Time Savings** | **Minutes** | **60-240 min → 2-3 min** |
 
 ### Qualitative Goals
-- ✅ 80% user satisfaction expected
-- ✅ Better team collaboration
-- ✅ Increased meeting confidence
+- 80% user satisfaction expected
+- Better team collaboration
+- Increased meeting confidence
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -92,7 +91,7 @@ Sales representatives in mid-sized Indian enterprises spend **1-4 hours per clie
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 🚀 Tech Stack
+## Tech Stack
 
 ### Backend
 - **Framework**: FastAPI (Python 3.11+)
@@ -110,10 +109,11 @@ Sales representatives in mid-sized Indian enterprises spend **1-4 hours per clie
 
 ### DevOps
 - **Containerization**: Docker + Docker Compose
+- **Workflow Automation**: n8n (Visual workflow builder)
 - **Monitoring**: Prometheus + Grafana
 - **Logging**: ELK Stack (Elasticsearch, Logstash, Kibana)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 AiSalesInsight/
@@ -143,13 +143,12 @@ AiSalesInsight/
 └── tests/                      # Test suites
 ```
 
-## 🛠️ Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 - Python 3.11+
 - Node.js 18+
-- Docker & Docker Compose
-- OpenAI API Key (or local LLM setup)
+- OpenAI API Key (optional - works with demo mode)
 
 ### Quick Start
 
@@ -167,10 +166,9 @@ cp .env.example .env
 # Edit .env with your API keys
 ```
 
-3. **Start Services**
+3. **Start Backend**
 ```bash
-docker-compose up -d  # Start PostgreSQL, Redis
-python -m uvicorn main:app --reload
+python main.py
 ```
 
 4. **Setup Frontend**
@@ -185,7 +183,7 @@ npm run dev
 - Backend API: http://localhost:8000
 - API Docs: http://localhost:8000/docs
 
-## 🤖 Agent Capabilities
+## Agent Capabilities
 
 ### 1. Research Agent
 - Gathers company background information
@@ -217,7 +215,7 @@ npm run dev
 - Sends timely notifications
 - Prioritizes urgent insights
 
-## 🎯 Use Cases
+## Use Cases
 
 ### Pre-Meeting Brief
 ```
@@ -240,46 +238,64 @@ Output:
 - Expansion plans
 ```
 
-## 📈 Future Enhancements
+## Future Enhancements
 
-- [ ] CRM integration (Salesforce, Zoho, HubSpot)
-- [ ] Email integration (Gmail, Outlook)
-- [ ] Mobile app (React Native)
-- [ ] Advanced analytics dashboard
-- [ ] Team collaboration features
-- [ ] Custom alert rules
-- [ ] Multi-language support (Hindi, Tamil, etc.)
-- [ ] Voice briefings
+- CRM integration (Salesforce, Zoho, HubSpot)
+- Email integration (Gmail, Outlook)
+- Mobile app (React Native)
+- Advanced analytics dashboard
+- Team collaboration features
 
-## � Documentation
+## n8n Workflow Automation
 
-| Guide | Description | Audience |
-|-------|-------------|----------|
-| [QUICKSTART.md](QUICKSTART.md) | 10-minute setup guide | Developers |
-| [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) | Complete overview | Everyone |
-| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | System design (15+ pages) | Technical |
-| [docs/TESTING.md](docs/TESTING.md) | Testing & validation | QA/Dev |
-| [docs/PRESENTATION_GUIDE.md](docs/PRESENTATION_GUIDE.md) | Presentation script | Presenters |
-| [docs/DEMO_GUIDE.md](docs/DEMO_GUIDE.md) | Live demo walkthrough | Presenters |
-| [docs/RESOURCES.md](docs/RESOURCES.md) | Complete resource index | Everyone |
+**NEW!** Visualize and automate your agentic workflows with n8n:
 
-## 🤝 Contributing
+### Quick Start
+```powershell
+# Start n8n workflow automation
+.\setup-n8n.ps1
 
-This is a course project, but contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+# Access n8n UI
+http://localhost:5678
+```
 
-## 📝 License
+### Features
+**Visual Workflow Builder** - See your multi-agent system in action  
+**Scheduled Automation** - Daily/weekly company insights  
+**300+ Integrations** - Connect to CRM, Email, Slack, etc.  
+**Custom Orchestration** - Build unique agent sequences  
+**Monitoring & Debugging** - Track execution and performance  
+
+### Example Workflows
+1. **Basic Orchestration** - Simple API visualization
+2. **Parallel Agents** - Multi-agent execution flow
+3. **Scheduled Insights** - Daily automated reports
+4. **CRM Integration** - Auto-update opportunities
+5. **Alert System** - Real-time notifications
+
+**Full Guide**: See [N8N_INTEGRATION_GUIDE.md](N8N_INTEGRATION_GUIDE.md)  
+**Quick Start**: See [n8n/QUICKSTART.md](n8n/QUICKSTART.md)
+
+## Documentation
+
+| Guide | Description |
+|-------|-------------|
+| [QUICKSTART.md](QUICKSTART.md) | 10-minute setup guide |
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Complete system design |
+| [docs/TESTING.md](docs/TESTING.md) | Testing & validation |
+| [docs/DEMO_GUIDE.md](docs/DEMO_GUIDE.md) | Live demo walkthrough |
+
+## License
 
 MIT License - Educational Project
 
-## 👤 Author
+## Project Information
 
-**[Your Name]**
-- Course: Product Management with GenAI & Agentic AI
-- LinkedIn: [Your LinkedIn]
-- GitHub: [Your GitHub]
-- Email: [Your Email]
+**Course**: Product Management with GenAI & Agentic AI  
+**Project Type**: Educational Multi-Agent AI System  
+**Submission Date**: January 2026
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Course instructors for guidance
 - Open-source community for amazing tools
@@ -289,12 +305,12 @@ MIT License - Educational Project
 
 <div align="center">
 
-**Built with ❤️ for empowering sales teams**
+**Built for empowering sales teams**
 
 [![Made with Python](https://img.shields.io/badge/Made%20with-Python-blue.svg)](https://www.python.org/)
 [![Made with React](https://img.shields.io/badge/Made%20with-React-blue.svg)](https://reactjs.org/)
 [![Powered by AI](https://img.shields.io/badge/Powered%20by-AI-green.svg)](https://openai.com/)
 
-[⬆ Back to Top](#-ai-sales-insight---intelligent-sales-intelligence-agent)
+[Back to Top](#ai-sales-insight---intelligent-sales-intelligence-agent)
 
 </div>
